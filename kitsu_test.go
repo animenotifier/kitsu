@@ -19,12 +19,12 @@ func TestAnimePage(t *testing.T) {
 	}
 }
 
-func TestAllAnime(t *testing.T) {
-	fmt.Println("Fetching all anime")
+// func TestAllAnime(t *testing.T) {
+// 	fmt.Println("Fetching all anime")
 
-	allAnime := AllAnime()
+// 	allAnime := AllAnime()
 
-	for anime := range allAnime {
-		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.En)
-	}
-}
+// 	for anime := range allAnime {
+// 		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.En)
+// 	}
+// }

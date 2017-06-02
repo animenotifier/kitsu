@@ -1,7 +1,6 @@
 package kitsu
 
 import (
-	"fmt"
 	"strings"
 	"time"
 )
@@ -18,7 +17,6 @@ func AllAnime() chan *Anime {
 		defer close(channel)
 
 		for {
-			fmt.Println(url)
 			page, err := GetAnimePage(url)
 
 			if err != nil {
@@ -38,7 +36,6 @@ func AllAnime() chan *Anime {
 			}
 
 			// Cut off API base URL
-			fmt.Println(nextURL, APIBaseURL)
 			nextURL = strings.TrimPrefix(nextURL, APIBaseURL)
 
 			// Continue with the next page
