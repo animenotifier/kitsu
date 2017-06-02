@@ -18,3 +18,13 @@ func TestAnimePage(t *testing.T) {
 		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.En)
 	}
 }
+
+func TestAllAnime(t *testing.T) {
+	fmt.Println("Fetching all anime")
+
+	allAnime := AllAnime()
+
+	for anime := range allAnime {
+		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.En)
+	}
+}
