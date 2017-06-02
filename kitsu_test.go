@@ -17,7 +17,7 @@ func TestAnimePage(t *testing.T) {
 	}
 
 	for _, anime := range page.Data {
-		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.En)
+		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.EnJp)
 	}
 }
 
@@ -28,7 +28,7 @@ func TestAllAnime(t *testing.T) {
 
 	count := 0
 	for anime := range allAnime {
-		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.En)
+		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.EnJp)
 		count++
 
 		if count >= 60 {
