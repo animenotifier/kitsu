@@ -3,10 +3,12 @@ package kitsu
 import (
 	"fmt"
 	"testing"
+
+	"github.com/fatih/color"
 )
 
 func TestAnimePage(t *testing.T) {
-	fmt.Println("Fetching first 5 anime titles")
+	color.Yellow("Fetching first 5 anime titles")
 
 	page, err := GetAnimePage("anime?page[limit]=5&page[offset]=0")
 
@@ -19,12 +21,19 @@ func TestAnimePage(t *testing.T) {
 	}
 }
 
-// func TestAllAnime(t *testing.T) {
-// 	fmt.Println("Fetching all anime")
+func TestAllAnime(t *testing.T) {
+	color.Yellow("Fetching all anime (stops after 60 anime)")
 
-// 	allAnime := AllAnime()
+	allAnime := AllAnime()
 
-// 	for anime := range allAnime {
-// 		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.En)
-// 	}
-// }
+	count := 0
+	for anime := range allAnime {
+		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.En)
+		count++
+
+		if count >= 60 {
+			close(allAnime)
+			break
+		}
+	}
+}

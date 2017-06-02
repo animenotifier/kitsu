@@ -11,10 +11,12 @@ import (
 func AllAnime() chan *Anime {
 	channel := make(chan *Anime)
 	url := "anime?page[limit]=20&page[offset]=0"
-	rateLimit := time.Tick(500 * time.Millisecond)
+	ticker := time.NewTicker(500 * time.Millisecond)
+	rateLimit := ticker.C
 
 	go func() {
 		defer close(channel)
+		defer ticker.Stop()
 
 		for {
 			page, err := GetAnimePage(url)
