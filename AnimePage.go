@@ -9,7 +9,26 @@ import (
 
 // AnimePage represents one page containing up to 20 anime objects.
 type AnimePage struct {
-	Data []*Anime `json:"data"`
+	Data     []*Anime `json:"data"`
+	Included []struct {
+		ID    string `json:"id"`
+		Type  string `json:"type"`
+		Links struct {
+			Self string `json:"self"`
+		} `json:"links"`
+		Attributes struct {
+			ExternalSite string `json:"externalSite"`
+			ExternalID   string `json:"externalId"`
+		} `json:"attributes"`
+		Relationships struct {
+			Media struct {
+				Links struct {
+					Self    string `json:"self"`
+					Related string `json:"related"`
+				} `json:"links"`
+			} `json:"media"`
+		} `json:"relationships"`
+	} `json:"included"`
 	Meta struct {
 		Count int `json:"count"`
 	} `json:"meta"`
