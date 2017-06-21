@@ -52,6 +52,7 @@ type Anime struct {
 		AgeRating      string `json:"ageRating"`
 		AgeRatingGuide string `json:"ageRatingGuide"`
 		Subtype        string `json:"subtype"`
+		Status         string `json:"status"`
 		PosterImage    struct {
 			Tiny     string `json:"tiny"`
 			Small    string `json:"small"`
