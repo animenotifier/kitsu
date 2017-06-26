@@ -21,6 +21,20 @@ func TestAnimePage(t *testing.T) {
 	}
 }
 
+func TestCharacterPage(t *testing.T) {
+	color.Yellow("Fetching first 5 anime titles")
+
+	page, err := GetCharacterPage("characters?page[limit]=5&page[offset]=0")
+
+	if err != nil {
+		panic(err)
+	}
+
+	for _, character := range page.Data {
+		fmt.Println("[", character.ID, "]", character.Attributes.Name)
+	}
+}
+
 func TestAllAnime(t *testing.T) {
 	color.Yellow("Fetching all anime (stops after 60 anime)")
 
@@ -33,6 +47,23 @@ func TestAllAnime(t *testing.T) {
 
 		if count >= 60 {
 			close(allAnime)
+			break
+		}
+	}
+}
+
+func TestAllCharacters(t *testing.T) {
+	color.Yellow("Fetching all characters (stops after 60 characters)")
+
+	allCharacters := AllCharacters()
+
+	count := 0
+	for character := range allCharacters {
+		fmt.Println("[", character.ID, "]", character.Attributes.Name)
+		count++
+
+		if count >= 60 {
+			close(allCharacters)
 			break
 		}
 	}
