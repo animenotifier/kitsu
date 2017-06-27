@@ -38,7 +38,7 @@ func TestCharacterPage(t *testing.T) {
 func TestAllAnime(t *testing.T) {
 	color.Yellow("Fetching all anime (stops after 60 anime)")
 
-	allAnime := AllAnime()
+	allAnime := StreamAnime()
 
 	count := 0
 	for anime := range allAnime {
@@ -55,7 +55,7 @@ func TestAllAnime(t *testing.T) {
 func TestAllCharacters(t *testing.T) {
 	color.Yellow("Fetching all characters (stops after 60 characters)")
 
-	allCharacters := AllCharacters()
+	allCharacters := StreamCharacters()
 
 	count := 0
 	for character := range allCharacters {

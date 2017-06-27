@@ -40,10 +40,10 @@ type Character struct {
 	} `json:"relationships"`
 }
 
-// AllCharacters returns a stream of all character objects (async).
+// StreamCharacters returns a stream of all character objects (async).
 // Be very careful to only use this function once as each
 // call will start a new goroutine requesting the whole data.
-func AllCharacters() chan *Character {
+func StreamCharacters() chan *Character {
 	channel := make(chan *Character)
 	url := "characters?page[limit]=20&page[offset]=0"
 	ticker := time.NewTicker(500 * time.Millisecond)

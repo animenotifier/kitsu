@@ -153,10 +153,10 @@ type Anime struct {
 	} `json:"relationships"`
 }
 
-// AllAnime returns a stream of all anime objects (async).
+// StreamAnime returns a stream of all anime objects (async).
 // Be very careful to only use this function once as each
 // call will start a new goroutine requesting the whole data.
-func AllAnime() chan *Anime {
+func StreamAnime() chan *Anime {
 	channel := make(chan *Anime)
 	url := "anime?page[limit]=20&page[offset]=0"
 	ticker := time.NewTicker(500 * time.Millisecond)
