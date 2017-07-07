@@ -45,8 +45,30 @@ func TestAllAnime(t *testing.T) {
 		fmt.Println("[", anime.ID, "]", anime.Attributes.Titles.EnJp)
 		count++
 
-		if count >= 60 {
-			close(allAnime)
+		if count >= 40 {
+			// close(allAnime)
+			break
+		}
+	}
+}
+
+func TestAllAnimeMappings(t *testing.T) {
+	color.Yellow("Fetching all anime with mappings (stops after 60 anime)")
+
+	allAnime := StreamAnimeWithMappings()
+
+	count := 0
+	for anime := range allAnime {
+		fmt.Println("[", anime.ID, "]")
+
+		for _, mapping := range anime.Mappings {
+			fmt.Println(mapping.Attributes.ExternalSite, mapping.Attributes.ExternalID)
+		}
+
+		count++
+
+		if count >= 40 {
+			// close(allAnime)
 			break
 		}
 	}
