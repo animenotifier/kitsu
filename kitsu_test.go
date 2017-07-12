@@ -37,7 +37,7 @@ func TestCharacterPage(t *testing.T) {
 }
 
 func TestStreamAnime(t *testing.T) {
-	color.Yellow("Fetching all anime (stops after 60 anime)")
+	color.Yellow("Fetching all anime (stops after 40 anime)")
 
 	allAnime := StreamAnime()
 
@@ -47,14 +47,13 @@ func TestStreamAnime(t *testing.T) {
 		count++
 
 		if count >= 40 {
-			// close(allAnime)
 			break
 		}
 	}
 }
 
 func TestStreamAnimeMappings(t *testing.T) {
-	color.Yellow("Fetching all anime with mappings (stops after 60 anime)")
+	color.Yellow("Fetching all anime with mappings (stops after 40 anime)")
 
 	allAnime := StreamAnimeWithMappings()
 
@@ -69,14 +68,13 @@ func TestStreamAnimeMappings(t *testing.T) {
 		count++
 
 		if count >= 40 {
-			// close(allAnime)
 			break
 		}
 	}
 }
 
 func TestStreamCharacters(t *testing.T) {
-	color.Yellow("Fetching all characters (stops after 60 characters)")
+	color.Yellow("Fetching all characters (stops after 40 characters)")
 
 	allCharacters := StreamCharacters()
 
@@ -85,8 +83,7 @@ func TestStreamCharacters(t *testing.T) {
 		fmt.Println("[", character.ID, "]", character.Attributes.Name)
 		count++
 
-		if count >= 60 {
-			// close(allCharacters)
+		if count >= 40 {
 			break
 		}
 	}
@@ -109,4 +106,30 @@ func TestGetUserError(t *testing.T) {
 
 	assert.Nil(t, user)
 	assert.Error(t, err)
+}
+
+func TestStreamUserLibrary(t *testing.T) {
+	color.Yellow("Fetching all library entries (stops after 40 entries)")
+
+	userName := "Akyoto"
+	user, _ := GetUser(userName)
+	library := user.StreamLibraryEntries()
+
+	count := 0
+	for entry := range library {
+		assert.NotNil(t, entry)
+		assert.NotEmpty(t, entry.Attributes.Status)
+
+		if entry.Anime != nil {
+			fmt.Println("[", entry.ID, "]", entry.Attributes.Status, "|", entry.Anime.Attributes.CanonicalTitle)
+		} else {
+			fmt.Println("[", entry.ID, "]", entry.Attributes.Status)
+		}
+
+		count++
+
+		if count >= 40 {
+			break
+		}
+	}
 }

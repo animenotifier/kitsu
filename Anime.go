@@ -153,5 +153,5 @@ type Anime struct {
 
 	// Custom fields, added by this client.
 	// Doesn't really exist in the API
-	Mappings []*Mapping `json:"mappings"`
+	Mappings []*Mapping
 }
