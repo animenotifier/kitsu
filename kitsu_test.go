@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/fatih/color"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestAnimePage(t *testing.T) {
@@ -35,7 +36,7 @@ func TestCharacterPage(t *testing.T) {
 	}
 }
 
-func TestAllAnime(t *testing.T) {
+func TestStreamAnime(t *testing.T) {
 	color.Yellow("Fetching all anime (stops after 60 anime)")
 
 	allAnime := StreamAnime()
@@ -52,7 +53,7 @@ func TestAllAnime(t *testing.T) {
 	}
 }
 
-func TestAllAnimeMappings(t *testing.T) {
+func TestStreamAnimeMappings(t *testing.T) {
 	color.Yellow("Fetching all anime with mappings (stops after 60 anime)")
 
 	allAnime := StreamAnimeWithMappings()
@@ -74,7 +75,7 @@ func TestAllAnimeMappings(t *testing.T) {
 	}
 }
 
-func TestAllCharacters(t *testing.T) {
+func TestStreamCharacters(t *testing.T) {
 	color.Yellow("Fetching all characters (stops after 60 characters)")
 
 	allCharacters := StreamCharacters()
@@ -85,8 +86,27 @@ func TestAllCharacters(t *testing.T) {
 		count++
 
 		if count >= 60 {
-			close(allCharacters)
+			// close(allCharacters)
 			break
 		}
 	}
+}
+
+func TestGetUser(t *testing.T) {
+	userName := "Akyoto"
+	user, err := GetUser(userName)
+
+	assert.NotNil(t, user)
+	assert.NoError(t, err)
+	assert.NotEmpty(t, user.ID)
+	assert.NotEmpty(t, user.Attributes.Name)
+
+}
+
+func TestGetUserError(t *testing.T) {
+	userName := "404"
+	user, err := GetUser(userName)
+
+	assert.Nil(t, user)
+	assert.Error(t, err)
 }
