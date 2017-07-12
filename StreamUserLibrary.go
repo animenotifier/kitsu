@@ -9,7 +9,7 @@ import (
 func (user *User) StreamLibraryEntries() chan *LibraryEntry {
 	channel := make(chan *LibraryEntry)
 	url := "users/" + user.ID + "/library-entries?page[limit]=10&page[offset]=0&include=anime"
-	ticker := time.NewTicker(500 * time.Millisecond)
+	ticker := time.NewTicker(50 * time.Millisecond)
 	rateLimit := ticker.C
 
 	go func() {

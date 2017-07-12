@@ -155,3 +155,8 @@ type Anime struct {
 	// Doesn't really exist in the API
 	Mappings []*Mapping
 }
+
+// Link returns the full URL to the anime.
+func (anime *Anime) Link() string {
+	return "https://kitsu.io/anime/" + anime.ID
+}
