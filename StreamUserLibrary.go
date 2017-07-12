@@ -8,7 +8,7 @@ import (
 // StreamLibraryEntries returns a stream of all library entries (async).
 func (user *User) StreamLibraryEntries() chan *LibraryEntry {
 	channel := make(chan *LibraryEntry)
-	url := "users/" + user.ID + "/library-entries?page[limit]=10&page[offset]=0&include=anime"
+	url := "users/" + user.ID + "/library-entries?page[limit]=500&page[offset]=0&include=anime"
 	ticker := time.NewTicker(50 * time.Millisecond)
 	rateLimit := ticker.C
 
