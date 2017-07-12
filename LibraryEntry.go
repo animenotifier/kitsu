@@ -23,13 +23,13 @@ type LibraryEntry struct {
 		VolumesOwned   int         `json:"volumesOwned"`
 		Reconsuming    bool        `json:"reconsuming"`
 		ReconsumeCount int         `json:"reconsumeCount"`
-		Notes          interface{} `json:"notes"`
+		Notes          string      `json:"notes"`
 		Private        bool        `json:"private"`
 		ProgressedAt   interface{} `json:"progressedAt"`
 		StartedAt      interface{} `json:"startedAt"`
 		FinishedAt     interface{} `json:"finishedAt"`
 		Rating         string      `json:"rating"`
-		RatingTwenty   interface{} `json:"ratingTwenty"`
+		RatingTwenty   int         `json:"ratingTwenty"`
 	} `json:"attributes"`
 	Relationships struct {
 		User struct {
