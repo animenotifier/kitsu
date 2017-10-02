@@ -6,16 +6,38 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestGetAnime(t *testing.T) {
+	anime, err := GetAnime("12268")
+
+	assert.NoError(t, err)
+	assert.NotNil(t, anime)
+	assert.NotEmpty(t, anime.ID)
+	assert.NotEmpty(t, anime.Attributes.Titles.EnJp)
+	assert.NotEmpty(t, anime.Link())
+	assert.NotEmpty(t, anime.Attributes.PosterImage.Original)
+	assert.NotEmpty(t, FixImageURL(anime.Attributes.PosterImage.Original))
+}
+
+func TestGetAnimeCharactersForAnime(t *testing.T) {
+	response, err := GetAnimeCharactersForAnime("12268")
+
+	assert.NoError(t, err)
+	assert.NotNil(t, response)
+	assert.NotNil(t, response.Data)
+	assert.NotEmpty(t, response.Included)
+}
+
 func TestAnimePage(t *testing.T) {
 	page, err := GetAnimePage("anime?page[limit]=5&page[offset]=0")
 
-	if err != nil {
-		panic(err)
-	}
+	assert.NoError(t, err)
 
 	for _, anime := range page.Data {
 		assert.NotEmpty(t, anime.ID)
 		assert.NotEmpty(t, anime.Attributes.Titles.EnJp)
+		assert.NotEmpty(t, anime.Link())
+		assert.NotEmpty(t, anime.Attributes.PosterImage.Original)
+		assert.NotEmpty(t, FixImageURL(anime.Attributes.PosterImage.Original))
 	}
 }
 
@@ -58,9 +80,7 @@ func TestStreamAnimeMappings(t *testing.T) {
 func TestCharacterPage(t *testing.T) {
 	page, err := GetCharacterPage("characters?page[limit]=5&page[offset]=0")
 
-	if err != nil {
-		panic(err)
-	}
+	assert.NoError(t, err)
 
 	for _, character := range page.Data {
 		assert.NotEmpty(t, character.ID)
