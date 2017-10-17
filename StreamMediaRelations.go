@@ -10,8 +10,8 @@ import (
 // call will start a new goroutine requesting the whole data.
 func StreamMediaRelations() chan *MediaRelation {
 	channel := make(chan *MediaRelation)
-	url := "media-relationships?include=source,destination"
-	ticker := time.NewTicker(500 * time.Millisecond)
+	url := "media-relationships?page[limit]=20&include=source,destination"
+	ticker := time.NewTicker(1000 * time.Millisecond)
 	rateLimit := ticker.C
 
 	go func() {
