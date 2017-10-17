@@ -77,6 +77,26 @@ func TestStreamAnimeMappings(t *testing.T) {
 	}
 }
 
+func TestStreamMediaRelations(t *testing.T) {
+	allRelations := StreamMediaRelations()
+
+	count := 0
+	for relation := range allRelations {
+		assert.NotEmpty(t, relation.ID)
+		assert.NotEmpty(t, relation.Attributes.Role)
+		assert.NotEmpty(t, relation.Relationships.Source.Data.ID)
+		assert.NotEmpty(t, relation.Relationships.Source.Data.Type)
+		assert.NotEmpty(t, relation.Relationships.Destination.Data.ID)
+		assert.NotEmpty(t, relation.Relationships.Destination.Data.Type)
+
+		count++
+
+		if count >= 40 {
+			break
+		}
+	}
+}
+
 func TestCharacterPage(t *testing.T) {
 	page, err := GetCharacterPage("characters?page[limit]=5&page[offset]=0")
 
