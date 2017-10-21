@@ -1,7 +1,6 @@
 package kitsu
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -201,14 +200,14 @@ type MediaRelationsResponse struct {
 
 // GetMediaRelations expects the usual query parameter and returns an MediaRelationsResponse object.
 func GetMediaRelations(query string) (*MediaRelationsResponse, error) {
-	body, requestError := Get(query)
+	response, requestError := Get(query)
 
 	if requestError != nil {
-		return nil, requestError[0]
+		return nil, requestError
 	}
 
-	response := new(MediaRelationsResponse)
-	decodeError := json.Unmarshal(body, response)
+	mediaRelations := new(MediaRelationsResponse)
+	decodeError := response.Unmarshal(mediaRelations)
 
-	return response, decodeError
+	return mediaRelations, decodeError
 }

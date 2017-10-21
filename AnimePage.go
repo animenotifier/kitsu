@@ -1,9 +1,5 @@
 package kitsu
 
-import (
-	"encoding/json"
-)
-
 // Auto-generated JSON definition from:
 // https://mholt.github.io/json-to-go/
 
@@ -24,14 +20,14 @@ type AnimePage struct {
 
 // GetAnimePage expects the usual query parameter and returns an AnimePage object instead of a raw string.
 func GetAnimePage(query string) (*AnimePage, error) {
-	body, requestError := Get(query)
+	response, requestError := Get(query)
 
 	if requestError != nil {
-		return nil, requestError[0]
+		return nil, requestError
 	}
 
 	page := new(AnimePage)
-	decodeError := json.Unmarshal(body, page)
+	decodeError := response.Unmarshal(page)
 
 	return page, decodeError
 }

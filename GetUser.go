@@ -1,24 +1,23 @@
 package kitsu
 
 import (
-	"encoding/json"
 	"errors"
 )
 
 // GetUser returns the user with the given nickname.
 func GetUser(userName string) (*User, error) {
-	body, requestError := Get("users?filter[name]=" + userName)
+	response, requestError := Get("users?filter[name]=" + userName)
 
 	if requestError != nil {
-		return nil, requestError[0]
+		return nil, requestError
 	}
 
-	response := new(UserResponse)
-	decodeError := json.Unmarshal(body, response)
+	user := new(UserResponse)
+	decodeError := response.Unmarshal(user)
 
-	if len(response.Data) == 0 {
+	if len(user.Data) == 0 {
 		return nil, errors.New("User " + userName + " could not be found on Kitsu")
 	}
 
-	return response.Data[0], decodeError
+	return user.Data[0], decodeError
 }

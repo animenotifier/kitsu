@@ -1,6 +1,6 @@
 package kitsu
 
-import "github.com/parnurzeal/gorequest"
+import "github.com/aerogo/http/client"
 
 const (
 	// APIBaseURL is the prefix for all API requests.
@@ -10,7 +10,7 @@ const (
 )
 
 // Get performs a GET request to the Kitsu API.
-func Get(query string) ([]byte, []error) {
-	_, body, err := gorequest.New().Get(APIBaseURL+query).Set("Accept", acceptType).EndBytes()
-	return body, err
+func Get(query string) (client.Response, error) {
+	resp, err := client.Get(APIBaseURL+query).Header("Accept", acceptType).End()
+	return resp, err
 }

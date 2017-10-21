@@ -1,9 +1,5 @@
 package kitsu
 
-import (
-	"encoding/json"
-)
-
 // LibraryEntryPage ...
 type LibraryEntryPage struct {
 	Data     []*LibraryEntry `json:"data"`
@@ -20,14 +16,14 @@ type LibraryEntryPage struct {
 
 // GetLibraryEntryPage ...
 func GetLibraryEntryPage(query string) (*LibraryEntryPage, error) {
-	body, requestError := Get(query)
+	response, requestError := Get(query)
 
 	if requestError != nil {
-		return nil, requestError[0]
+		return nil, requestError
 	}
 
 	page := new(LibraryEntryPage)
-	decodeError := json.Unmarshal(body, page)
+	decodeError := response.Unmarshal(page)
 
 	return page, decodeError
 }

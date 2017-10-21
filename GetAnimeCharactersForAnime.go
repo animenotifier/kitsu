@@ -1,17 +1,15 @@
 package kitsu
 
-import "encoding/json"
-
 // GetAnimeCharactersForAnime ...
 func GetAnimeCharactersForAnime(animeID string) (*AnimeCharactersResponse, error) {
-	body, requestError := Get("anime/" + animeID + "?include=animeCharacters,animeCharacters.character")
+	response, requestError := Get("anime/" + animeID + "?include=animeCharacters,animeCharacters.character")
 
 	if requestError != nil {
-		return nil, requestError[0]
+		return nil, requestError
 	}
 
-	resp := &AnimeCharactersResponse{}
-	json.Unmarshal(body, &resp)
+	characters := new(AnimeCharactersResponse)
+	response.Unmarshal(characters)
 
-	return resp, nil
+	return characters, nil
 }
