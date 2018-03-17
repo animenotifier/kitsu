@@ -73,84 +73,84 @@ type Anime struct {
 		ShowType       string `json:"showType"`
 		Nsfw           bool   `json:"nsfw"`
 	} `json:"attributes"`
-	Relationships struct {
-		Genres struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"genres"`
-		Categories struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"categories"`
-		Castings struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"castings"`
-		Installments struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"installments"`
-		Mappings struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-			Data []struct {
-				ID   string `json:"id"`
-				Type string `json:"type"`
-			} `json:"data"`
-		} `json:"mappings"`
-		Reviews struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"reviews"`
-		MediaRelationships struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"mediaRelationships"`
-		Episodes struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"episodes"`
-		StreamingLinks struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"streamingLinks"`
-		AnimeProductions struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"animeProductions"`
-		AnimeCharacters struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"animeCharacters"`
-		AnimeStaff struct {
-			Links struct {
-				Self    string `json:"self"`
-				Related string `json:"related"`
-			} `json:"links"`
-		} `json:"animeStaff"`
-	} `json:"relationships"`
+	// Relationships struct {
+	// 	Genres struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"genres"`
+	// 	Categories struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"categories"`
+	// 	Castings struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"castings"`
+	// 	Installments struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"installments"`
+	// 	Mappings struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 		Data []struct {
+	// 			ID   string `json:"id"`
+	// 			Type string `json:"type"`
+	// 		} `json:"data"`
+	// 	} `json:"mappings"`
+	// 	Reviews struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"reviews"`
+	// 	MediaRelationships struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"mediaRelationships"`
+	// 	Episodes struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"episodes"`
+	// 	StreamingLinks struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"streamingLinks"`
+	// 	AnimeProductions struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"animeProductions"`
+	// 	AnimeCharacters struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"animeCharacters"`
+	// 	AnimeStaff struct {
+	// 		Links struct {
+	// 			Self    string `json:"self"`
+	// 			Related string `json:"related"`
+	// 		} `json:"links"`
+	// 	} `json:"animeStaff"`
+	// } `json:"relationships"`
 }
 
 // Link returns the full URL to the anime.
