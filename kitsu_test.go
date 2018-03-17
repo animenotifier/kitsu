@@ -57,26 +57,6 @@ func TestStreamAnime(t *testing.T) {
 	}
 }
 
-func TestStreamAnimeMappings(t *testing.T) {
-	allAnime := StreamAnimeWithMappings()
-
-	count := 0
-	for anime := range allAnime {
-		assert.NotEmpty(t, anime.ID)
-
-		for _, mapping := range anime.Mappings {
-			assert.NotEmpty(t, mapping.Attributes.ExternalSite)
-			assert.NotEmpty(t, mapping.Attributes.ExternalID)
-		}
-
-		count++
-
-		if count >= 40 {
-			break
-		}
-	}
-}
-
 func TestStreamMediaRelations(t *testing.T) {
 	allRelations := StreamMediaRelations()
 

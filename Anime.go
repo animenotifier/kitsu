@@ -4,6 +4,7 @@ package kitsu
 // https://mholt.github.io/json-to-go/
 
 // Anime in the Kitsu API.
+// Example: https://kitsu.io/api/edge/anime/1
 type Anime struct {
 	ID    string `json:"id"`
 	Type  string `json:"type"`
@@ -150,10 +151,6 @@ type Anime struct {
 			} `json:"links"`
 		} `json:"animeStaff"`
 	} `json:"relationships"`
-
-	// Custom fields, added by this client.
-	// Doesn't really exist in the API
-	Mappings []*Mapping
 }
 
 // Link returns the full URL to the anime.
