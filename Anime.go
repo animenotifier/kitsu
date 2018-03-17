@@ -23,33 +23,33 @@ type Anime struct {
 		CanonicalTitle    string   `json:"canonicalTitle"`
 		AbbreviatedTitles []string `json:"abbreviatedTitles"`
 		AverageRating     string   `json:"averageRating"`
-		RatingFrequencies struct {
-			Num2  string `json:"2"`
-			Num3  string `json:"3"`
-			Num4  string `json:"4"`
-			Num5  string `json:"5"`
-			Num6  string `json:"6"`
-			Num7  string `json:"7"`
-			Num8  string `json:"8"`
-			Num9  string `json:"9"`
-			Num10 string `json:"10"`
-			Num11 string `json:"11"`
-			Num12 string `json:"12"`
-			Num13 string `json:"13"`
-			Num14 string `json:"14"`
-			Num15 string `json:"15"`
-			Num16 string `json:"16"`
-			Num17 string `json:"17"`
-			Num18 string `json:"18"`
-			Num19 string `json:"19"`
-			Num20 string `json:"20"`
-		} `json:"ratingFrequencies"`
-		UserCount      int    `json:"userCount"`
-		FavoritesCount int    `json:"favoritesCount"`
-		StartDate      string `json:"startDate"`
-		EndDate        string `json:"endDate"`
-		PopularityRank int    `json:"popularityRank"`
-		RatingRank     int    `json:"ratingRank"`
+		// RatingFrequencies struct {
+		// 	Num2  string `json:"2"`
+		// 	Num3  string `json:"3"`
+		// 	Num4  string `json:"4"`
+		// 	Num5  string `json:"5"`
+		// 	Num6  string `json:"6"`
+		// 	Num7  string `json:"7"`
+		// 	Num8  string `json:"8"`
+		// 	Num9  string `json:"9"`
+		// 	Num10 string `json:"10"`
+		// 	Num11 string `json:"11"`
+		// 	Num12 string `json:"12"`
+		// 	Num13 string `json:"13"`
+		// 	Num14 string `json:"14"`
+		// 	Num15 string `json:"15"`
+		// 	Num16 string `json:"16"`
+		// 	Num17 string `json:"17"`
+		// 	Num18 string `json:"18"`
+		// 	Num19 string `json:"19"`
+		// 	Num20 string `json:"20"`
+		// } `json:"ratingFrequencies"`
+		// UserCount      int    `json:"userCount"`
+		// FavoritesCount int    `json:"favoritesCount"`
+		StartDate string `json:"startDate"`
+		EndDate   string `json:"endDate"`
+		// PopularityRank int    `json:"popularityRank"`
+		// RatingRank     int    `json:"ratingRank"`
 		AgeRating      string `json:"ageRating"`
 		AgeRatingGuide string `json:"ageRatingGuide"`
 		Subtype        string `json:"subtype"`
