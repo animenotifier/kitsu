@@ -6,8 +6,6 @@ import (
 )
 
 // StreamAnime returns a stream of all anime objects (async).
-// Be very careful to only use this function once as each
-// call will start a new goroutine requesting the whole data.
 func StreamAnime() chan *Anime {
 	channel := make(chan *Anime)
 	url := "anime?page[limit]=20&page[offset]=0"

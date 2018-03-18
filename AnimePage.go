@@ -10,24 +10,19 @@ type AnimePage struct {
 	Meta     struct {
 		Count int `json:"count"`
 	} `json:"meta"`
-	Links struct {
-		First string `json:"first"`
-		Prev  string `json:"prev"`
-		Next  string `json:"next"`
-		Last  string `json:"last"`
-	} `json:"links"`
+	Links APILinks `json:"links"`
 }
 
-// GetAnimePage expects the usual query parameter and returns an AnimePage object instead of a raw string.
+// GetAnimePage expects the usual query parameter and returns an AnimePage object.
 func GetAnimePage(query string) (*AnimePage, error) {
-	response, requestError := Get(query)
+	response, err := Get(query)
 
-	if requestError != nil {
-		return nil, requestError
+	if err != nil {
+		return nil, err
 	}
 
-	page := new(AnimePage)
-	decodeError := response.Unmarshal(page)
+	page := &AnimePage{}
+	err = response.Unmarshal(page)
 
-	return page, decodeError
+	return page, err
 }

@@ -6,8 +6,6 @@ import (
 )
 
 // StreamMediaRelations returns a stream of all anime relations (async).
-// Be very careful to only use this function once as each
-// call will start a new goroutine requesting the whole data.
 func StreamMediaRelations() chan *MediaRelation {
 	channel := make(chan *MediaRelation)
 	url := "media-relationships?page[limit]=20&include=source,destination"

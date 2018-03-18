@@ -5,10 +5,10 @@ import (
 	"time"
 )
 
-// StreamCharacters returns a stream of all character objects (async).
-func StreamCharacters() chan *Character {
-	channel := make(chan *Character)
-	url := "characters?page[limit]=20&page[offset]=0"
+// StreamMappings returns a stream of all mappings (async).
+func StreamMappings() chan *Mapping {
+	channel := make(chan *Mapping)
+	url := "mappings?page[limit]=20&page[offset]=0&include=item"
 	ticker := time.NewTicker(500 * time.Millisecond)
 	rateLimit := ticker.C
 
@@ -17,15 +17,15 @@ func StreamCharacters() chan *Character {
 		defer ticker.Stop()
 
 		for {
-			page, err := GetCharacterPage(url)
+			page, err := GetMappingPage(url)
 
 			if err != nil {
 				panic(err)
 			}
 
-			// Feed character data from current page to the stream
-			for _, character := range page.Data {
-				channel <- character
+			// Feed mapping data from current page to the stream
+			for _, mapping := range page.Data {
+				channel <- mapping
 			}
 
 			nextURL := page.Links.Next

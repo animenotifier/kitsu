@@ -6,11 +6,11 @@ package kitsu
 // Anime in the Kitsu API.
 // Example: https://kitsu.io/api/edge/anime/1
 type Anime struct {
-	ID    string `json:"id"`
-	Type  string `json:"type"`
-	Links struct {
-		Self string `json:"self"`
-	} `json:"links"`
+	ID string `json:"id"`
+	// Type  string `json:"type"`
+	// Links struct {
+	// 	Self string `json:"self"`
+	// } `json:"links"`
 	Attributes struct {
 		Slug                string `json:"slug"`
 		Synopsis            string `json:"synopsis"`
