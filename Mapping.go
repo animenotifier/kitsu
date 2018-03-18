@@ -8,10 +8,10 @@ type Mapping struct {
 	// 	Self string `json:"self"`
 	// } `json:"links"`
 	Attributes struct {
-		CreatedAt    interface{} `json:"createdAt"`
-		UpdatedAt    interface{} `json:"updatedAt"`
-		ExternalSite string      `json:"externalSite"`
-		ExternalID   string      `json:"externalId"`
+		// CreatedAt    interface{} `json:"createdAt"`
+		// UpdatedAt    interface{} `json:"updatedAt"`
+		ExternalSite string `json:"externalSite"`
+		ExternalID   string `json:"externalId"`
 	} `json:"attributes"`
 	Relationships struct {
 		Item struct {
