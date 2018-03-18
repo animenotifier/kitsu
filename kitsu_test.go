@@ -41,6 +41,19 @@ func TestAnimePage(t *testing.T) {
 	}
 }
 
+func TestMappingPage(t *testing.T) {
+	page, err := GetMappingsPage("mappings?page[limit]=5&page[offset]=0&include=item")
+
+	assert.NoError(t, err)
+
+	for _, mapping := range page.Data {
+		assert.NotEmpty(t, mapping.ID)
+		assert.NotEmpty(t, mapping.Attributes.ExternalID)
+		assert.NotEmpty(t, mapping.Attributes.ExternalSite)
+		assert.NotEmpty(t, mapping.Relationships.Item.Data.ID)
+	}
+}
+
 func TestStreamAnime(t *testing.T) {
 	allAnime := StreamAnime()
 
@@ -95,6 +108,24 @@ func TestStreamCharacters(t *testing.T) {
 	for character := range allCharacters {
 		assert.NotEmpty(t, character.ID)
 		assert.NotEmpty(t, character.Attributes.Name)
+
+		count++
+
+		if count >= 40 {
+			break
+		}
+	}
+}
+
+func TestStreamMappings(t *testing.T) {
+	allMappings := StreamMappings()
+
+	count := 0
+	for mapping := range allMappings {
+		assert.NotEmpty(t, mapping.ID)
+		assert.NotEmpty(t, mapping.Attributes.ExternalID)
+		assert.NotEmpty(t, mapping.Attributes.ExternalSite)
+		assert.NotEmpty(t, mapping.Relationships.Item.Data.ID)
 
 		count++
 

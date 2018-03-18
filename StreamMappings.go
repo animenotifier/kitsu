@@ -17,7 +17,7 @@ func StreamMappings() chan *Mapping {
 		defer ticker.Stop()
 
 		for {
-			page, err := GetMappingPage(url)
+			page, err := GetMappingsPage(url)
 
 			if err != nil {
 				panic(err)
