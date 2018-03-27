@@ -97,7 +97,7 @@ func TestCharacterPage(t *testing.T) {
 
 	for _, character := range page.Data {
 		assert.NotEmpty(t, character.ID)
-		assert.NotEmpty(t, character.Attributes.Name)
+		assert.NotEmpty(t, character.Attributes.CanonicalName)
 	}
 }
 
@@ -107,7 +107,7 @@ func TestStreamCharacters(t *testing.T) {
 	count := 0
 	for character := range allCharacters {
 		assert.NotEmpty(t, character.ID)
-		assert.NotEmpty(t, character.Attributes.Name)
+		assert.NotEmpty(t, character.Attributes.CanonicalName)
 
 		count++
 
