@@ -146,7 +146,7 @@ func TestGetUser(t *testing.T) {
 }
 
 func TestGetUserError(t *testing.T) {
-	userName := "404"
+	userName := "😀🙄😇"
 	user, err := GetUser(userName)
 
 	assert.Nil(t, user)
