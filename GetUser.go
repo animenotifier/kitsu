@@ -6,7 +6,7 @@ import (
 
 // GetUser returns the user with the given nickname.
 func GetUser(userName string) (*User, error) {
-	response, requestError := Get("users?filter[name]=" + userName)
+	response, requestError := Get("users?filter[slug]=" + userName)
 
 	if requestError != nil {
 		return nil, requestError
