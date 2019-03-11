@@ -16,14 +16,14 @@ type LibraryEntryPage struct {
 
 // GetLibraryEntryPage ...
 func GetLibraryEntryPage(query string) (*LibraryEntryPage, error) {
-	response, requestError := Get(query)
+	response, err := Get(query)
 
-	if requestError != nil {
-		return nil, requestError
+	if err != nil {
+		return nil, err
 	}
 
-	page := new(LibraryEntryPage)
-	decodeError := response.Unmarshal(page)
+	page := &LibraryEntryPage{}
+	err = response.Unmarshal(page)
 
-	return page, decodeError
+	return page, err
 }
