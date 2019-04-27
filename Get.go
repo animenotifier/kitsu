@@ -10,7 +10,7 @@ const (
 )
 
 // Get performs a GET request to the Kitsu API.
-func Get(query string) (client.Response, error) {
-	resp, err := client.Get(APIBaseURL+query).Header("Accept", acceptType).End()
-	return resp, err
+func Get(query string) (*client.Response, error) {
+	response, err := client.Get(APIBaseURL+query).Header("Accept", acceptType).End()
+	return response, err
 }
