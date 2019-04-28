@@ -8,8 +8,12 @@ func GetAnimeCharactersForAnime(animeID string) (*AnimeCharactersResponse, error
 		return nil, requestError
 	}
 
-	characters := new(AnimeCharactersResponse)
-	response.Unmarshal(characters)
+	characters := &AnimeCharactersResponse{}
+	err := response.Unmarshal(characters)
+
+	if err != nil {
+		return nil, err
+	}
 
 	return characters, nil
 }
