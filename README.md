@@ -2,7 +2,7 @@
 
 [![Godoc reference][godoc-image]][godoc-url]
 [![Go report card][goreportcard-image]][goreportcard-url]
-[![Tests][travis-image]][travis-url]
+[![Tests][tests-image]][tests-url]
 [![Code coverage][codecov-image]][codecov-url]
 [![License][license-image]][license-url]
 
@@ -18,8 +18,8 @@ Kitsu API client written in Go.
 [godoc-url]: https://godoc.org/github.com/animenotifier/kitsu
 [goreportcard-image]: https://goreportcard.com/badge/github.com/animenotifier/kitsu
 [goreportcard-url]: https://goreportcard.com/report/github.com/animenotifier/kitsu
-[travis-image]: https://travis-ci.org/animenotifier/kitsu.svg?branch=master
-[travis-url]: https://travis-ci.org/animenotifier/kitsu
+[tests-image]: https://cloud.drone.io/api/badges/animenotifier/kitsu/status.svg
+[tests-url]: https://cloud.drone.io/animenotifier/kitsu
 [codecov-image]: https://codecov.io/gh/animenotifier/kitsu/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/animenotifier/kitsu
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
