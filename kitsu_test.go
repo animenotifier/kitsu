@@ -3,54 +3,54 @@ package kitsu
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/akyoto/assert"
 )
 
 func TestGetAnime(t *testing.T) {
 	anime, err := GetAnime("12268")
 
-	assert.NoError(t, err)
+	assert.Nil(t, err)
 	assert.NotNil(t, anime)
-	assert.NotEmpty(t, anime.ID)
-	assert.NotEmpty(t, anime.Attributes.Titles.EnJp)
-	assert.NotEmpty(t, anime.Link())
-	assert.NotEmpty(t, anime.Attributes.PosterImage.Original)
-	assert.NotEmpty(t, FixImageURL(anime.Attributes.PosterImage.Original))
+	assert.NotEqual(t, anime.ID, "")
+	assert.NotEqual(t, anime.Attributes.Titles.EnJp, "")
+	assert.NotEqual(t, anime.Link(), "")
+	assert.NotEqual(t, anime.Attributes.PosterImage.Original, "")
+	assert.NotEqual(t, FixImageURL(anime.Attributes.PosterImage.Original), "")
 }
 
 func TestGetAnimeCharactersForAnime(t *testing.T) {
 	response, err := GetAnimeCharactersForAnime("12268")
 
-	assert.NoError(t, err)
+	assert.Nil(t, err)
 	assert.NotNil(t, response)
 	assert.NotNil(t, response.Data)
-	assert.NotEmpty(t, response.Included)
+	assert.NotEqual(t, response.Included, "")
 }
 
 func TestAnimePage(t *testing.T) {
 	page, err := GetAnimePage("anime?page[limit]=5&page[offset]=0")
 
-	assert.NoError(t, err)
+	assert.Nil(t, err)
 
 	for _, anime := range page.Data {
-		assert.NotEmpty(t, anime.ID)
-		assert.NotEmpty(t, anime.Attributes.Titles.EnJp)
-		assert.NotEmpty(t, anime.Link())
-		assert.NotEmpty(t, anime.Attributes.PosterImage.Original)
-		assert.NotEmpty(t, FixImageURL(anime.Attributes.PosterImage.Original))
+		assert.NotEqual(t, anime.ID, "")
+		assert.NotEqual(t, anime.Attributes.Titles.EnJp, "")
+		assert.NotEqual(t, anime.Link(), "")
+		assert.NotEqual(t, anime.Attributes.PosterImage.Original, "")
+		assert.NotEqual(t, FixImageURL(anime.Attributes.PosterImage.Original), "")
 	}
 }
 
 func TestMappingPage(t *testing.T) {
 	page, err := GetMappingsPage("mappings?page[limit]=5&page[offset]=0&include=item")
 
-	assert.NoError(t, err)
+	assert.Nil(t, err)
 
 	for _, mapping := range page.Data {
-		assert.NotEmpty(t, mapping.ID)
-		assert.NotEmpty(t, mapping.Attributes.ExternalID)
-		assert.NotEmpty(t, mapping.Attributes.ExternalSite)
-		assert.NotEmpty(t, mapping.Relationships.Item.Data.ID)
+		assert.NotEqual(t, mapping.ID, "")
+		assert.NotEqual(t, mapping.Attributes.ExternalID, "")
+		assert.NotEqual(t, mapping.Attributes.ExternalSite, "")
+		assert.NotEqual(t, mapping.Relationships.Item.Data.ID, "")
 	}
 }
 
@@ -59,8 +59,8 @@ func TestStreamAnime(t *testing.T) {
 
 	count := 0
 	for anime := range allAnime {
-		assert.NotEmpty(t, anime.ID)
-		assert.NotEmpty(t, anime.Attributes.Titles.EnJp)
+		assert.NotEqual(t, anime.ID, "")
+		assert.NotEqual(t, anime.Attributes.Titles.EnJp, "")
 
 		count++
 
@@ -75,12 +75,12 @@ func TestStreamMediaRelations(t *testing.T) {
 
 	count := 0
 	for relation := range allRelations {
-		assert.NotEmpty(t, relation.ID)
-		assert.NotEmpty(t, relation.Attributes.Role)
-		assert.NotEmpty(t, relation.Relationships.Source.Data.ID)
-		assert.NotEmpty(t, relation.Relationships.Source.Data.Type)
-		assert.NotEmpty(t, relation.Relationships.Destination.Data.ID)
-		assert.NotEmpty(t, relation.Relationships.Destination.Data.Type)
+		assert.NotEqual(t, relation.ID, "")
+		assert.NotEqual(t, relation.Attributes.Role, "")
+		assert.NotEqual(t, relation.Relationships.Source.Data.ID, "")
+		assert.NotEqual(t, relation.Relationships.Source.Data.Type, "")
+		assert.NotEqual(t, relation.Relationships.Destination.Data.ID, "")
+		assert.NotEqual(t, relation.Relationships.Destination.Data.Type, "")
 
 		count++
 
@@ -93,11 +93,11 @@ func TestStreamMediaRelations(t *testing.T) {
 func TestCharacterPage(t *testing.T) {
 	page, err := GetCharacterPage("characters?page[limit]=5&page[offset]=0")
 
-	assert.NoError(t, err)
+	assert.Nil(t, err)
 
 	for _, character := range page.Data {
-		assert.NotEmpty(t, character.ID)
-		assert.NotEmpty(t, character.Attributes.CanonicalName)
+		assert.NotEqual(t, character.ID, "")
+		assert.NotEqual(t, character.Attributes.CanonicalName, "")
 	}
 }
 
@@ -106,8 +106,8 @@ func TestStreamCharacters(t *testing.T) {
 
 	count := 0
 	for character := range allCharacters {
-		assert.NotEmpty(t, character.ID)
-		assert.NotEmpty(t, character.Attributes.CanonicalName)
+		assert.NotEqual(t, character.ID, "")
+		assert.NotEqual(t, character.Attributes.CanonicalName, "")
 
 		count++
 
@@ -122,10 +122,10 @@ func TestStreamMappings(t *testing.T) {
 
 	count := 0
 	for mapping := range allMappings {
-		assert.NotEmpty(t, mapping.ID)
-		assert.NotEmpty(t, mapping.Attributes.ExternalID)
-		assert.NotEmpty(t, mapping.Attributes.ExternalSite)
-		assert.NotEmpty(t, mapping.Relationships.Item.Data.ID)
+		assert.NotEqual(t, mapping.ID, "")
+		assert.NotEqual(t, mapping.Attributes.ExternalID, "")
+		assert.NotEqual(t, mapping.Attributes.ExternalSite, "")
+		assert.NotEqual(t, mapping.Relationships.Item.Data.ID, "")
 
 		count++
 
@@ -140,9 +140,9 @@ func TestGetUser(t *testing.T) {
 	user, err := GetUser(userName)
 
 	assert.NotNil(t, user)
-	assert.NoError(t, err)
-	assert.NotEmpty(t, user.ID)
-	assert.NotEmpty(t, user.Attributes.Name)
+	assert.Nil(t, err)
+	assert.NotEqual(t, user.ID, "")
+	assert.NotEqual(t, user.Attributes.Name, "")
 }
 
 func TestGetUserError(t *testing.T) {
@@ -150,7 +150,7 @@ func TestGetUserError(t *testing.T) {
 	user, err := GetUser(userName)
 
 	assert.Nil(t, user)
-	assert.Error(t, err)
+	assert.NotNil(t, err)
 }
 
 func TestStreamUserLibrary(t *testing.T) {
@@ -161,13 +161,13 @@ func TestStreamUserLibrary(t *testing.T) {
 	count := 0
 	for entry := range library {
 		assert.NotNil(t, entry)
-		assert.NotEmpty(t, entry.Attributes.Status)
+		assert.NotEqual(t, entry.Attributes.Status, "")
 
-		assert.NotEmpty(t, entry.ID)
-		assert.NotEmpty(t, entry.Attributes.Status)
+		assert.NotEqual(t, entry.ID, "")
+		assert.NotEqual(t, entry.Attributes.Status, "")
 
 		if entry.Anime != nil {
-			assert.NotEmpty(t, entry.Anime.Attributes.CanonicalTitle)
+			assert.NotEqual(t, entry.Anime.Attributes.CanonicalTitle, "")
 		}
 
 		count++
